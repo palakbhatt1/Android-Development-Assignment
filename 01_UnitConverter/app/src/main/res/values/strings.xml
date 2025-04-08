@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Unit Converter</string>
+    <string name="length_converter">UNIT CONVERTER</string>
+    <string name="zero_cm">0 cm</string>
+    <string name="zero_ft">0 ft</string>
+    <string name="centimeters">Centimeters (cm)</string>
+    <string name="feet">Feet (ft)</string>
+    <string name="meters">Meters (m)</string>
+    <string name="inches">Inches (in)</string>
+    <string name="yards">Yards (yd)</string>
+    <string name="enter_value_hint">Enter value</string>
+    <string name="arrow">"⇅"</string>
+    <string name="zero">"0"</string>
+
+    <string-array name="length_units">
+        <item>@string/centimeters</item>
+        <item>@string/feet</item>
+        <item>@string/meters</item>
+        <item>@string/inches</item>
+        <item>@string/yards</item>
+    </string-array>
+
+</resources>
