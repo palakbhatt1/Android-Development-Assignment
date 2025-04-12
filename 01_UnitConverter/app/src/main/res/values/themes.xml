@@ -1,9 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme._01_UnitConverter" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <!-- Base application theme using Material 2 -->
+    <style name="Base.Theme._01_UnitConverter." parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="cardViewStyle">@style/CustomCardView</item>
+        <item name="android:windowBackground">@color/bg</item>
     </style>
 
-    <style name="Theme._01_UnitConverter" parent="Base.Theme._01_UnitConverter" />
+    <!-- Optional: custom card style to set card background -->
+    <style name="CustomCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/card_bg</item>
+    </style>
+
 </resources>

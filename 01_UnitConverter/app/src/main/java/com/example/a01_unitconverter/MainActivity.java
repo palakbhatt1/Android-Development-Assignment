@@ -9,11 +9,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-import com.airbnb.lottie.LottieAnimationView;
-import com.airbnb.lottie.LottieDrawable;
-
+import android.widget.Toast;
+import android.content.SharedPreferences;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
+import com.airbnb.lottie.LottieAnimationView;
+import com.airbnb.lottie.LottieDrawable;
 
 import java.text.DecimalFormat;
 
@@ -41,11 +44,36 @@ public class MainActivity extends AppCompatActivity {
         inputValue = findViewById(R.id.inputValue);
         outputValue = findViewById(R.id.outputValue);
         btnSwap = findViewById(R.id.btnSwap);
+        ImageButton settingsButton = findViewById(R.id.settings_button);
 
+        // Theme Popup Menu
+        settingsButton.setOnClickListener(v -> {
+            androidx.appcompat.widget.PopupMenu popupMenu = new androidx.appcompat.widget.PopupMenu(MainActivity.this, settingsButton);
+            popupMenu.getMenuInflater().inflate(R.menu.theme_menu, popupMenu.getMenu());
+
+            popupMenu.setOnMenuItemClickListener(item -> {
+                int id = item.getItemId();
+                if (id == R.id.light_theme) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    saveThemePref(AppCompatDelegate.MODE_NIGHT_NO);
+                    return true;
+                } else if (id == R.id.dark_theme) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    saveThemePref(AppCompatDelegate.MODE_NIGHT_YES);
+                    return true;
+                }
+                return false;
+            });
+
+            popupMenu.show();
+        });
+
+        // Lottie Animation
         LottieAnimationView lottieView = findViewById(R.id.lottieView);
         lottieView.setRepeatCount(LottieDrawable.INFINITE);
         lottieView.playAnimation();
 
+        // Spinner setup
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.length_units,
@@ -58,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
         spinnerFrom.setSelection(0);
         spinnerTo.setSelection(1);
 
-        // Text change listener to auto convert
         inputValue.addTextChangedListener(new android.text.TextWatcher() {
             @Override
             public void afterTextChanged(android.text.Editable s) {
@@ -69,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
         });
 
-        // Spinner selection listeners
         AdapterView.OnItemSelectedListener selectionListener = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -82,13 +108,27 @@ public class MainActivity extends AppCompatActivity {
         spinnerFrom.setOnItemSelectedListener(selectionListener);
         spinnerTo.setOnItemSelectedListener(selectionListener);
 
-        // Swap button logic
         btnSwap.setOnClickListener(v -> {
             int fromPos = spinnerFrom.getSelectedItemPosition();
             int toPos = spinnerTo.getSelectedItemPosition();
             spinnerFrom.setSelection(toPos);
             spinnerTo.setSelection(fromPos);
         });
+
+        loadThemePref();  // Optional: Apply saved theme on startup
+    }
+
+    private void saveThemePref(int mode) {
+        SharedPreferences prefs = getSharedPreferences("theme_prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("theme_mode", mode);
+        editor.apply();
+    }
+
+    private void loadThemePref() {
+        SharedPreferences prefs = getSharedPreferences("theme_prefs", MODE_PRIVATE);
+        int mode = prefs.getInt("theme_mode", AppCompatDelegate.MODE_NIGHT_NO);
+        AppCompatDelegate.setDefaultNightMode(mode);
     }
 
     private void convertUnits() {
@@ -103,9 +143,16 @@ public class MainActivity extends AppCompatActivity {
             String fromUnit = spinnerFrom.getSelectedItem().toString();
             String toUnit = spinnerTo.getSelectedItem().toString();
 
+            if (fromUnit.equals(toUnit)) {
+                Toast.makeText(this, "Same units selected. No conversion needed.", Toast.LENGTH_SHORT).show();
+                outputValue.setText(df.format(value));
+                return;
+            }
+
             double result = convert(value, fromUnit, toUnit);
             outputValue.setText(df.format(result));
         } catch (NumberFormatException e) {
+            Toast.makeText(this, "Please enter a valid number", Toast.LENGTH_SHORT).show();
             outputValue.setText("Invalid input");
         }
     }
