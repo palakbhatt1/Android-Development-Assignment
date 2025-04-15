@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cameraLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    tools:context=".CameraActivity">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Camera"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textColor="#4A148C"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Placeholder for Camera Preview -->
+    <ImageView
+        android:id="@+id/capturedImage"
+        android:layout_width="300dp"
+        android:layout_height="500dp"
+        android:scaleType="centerCrop"
+        android:background="#DDD"
+        android:contentDescription="Captured Image"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Button Row: Retake | Capture | Save -->
+    <LinearLayout
+        android:id="@+id/buttonGroupLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="12dp">
+
+        <!-- Retake Button -->
+        <ImageButton
+            android:id="@+id/retakeButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/retake"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
+            android:contentDescription="Retake Photo"
+            android:layout_marginEnd="20dp" />
+
+        <!-- Capture Button -->
+        <ImageButton
+            android:id="@+id/captureButton"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:src="@drawable/camera"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
+            android:contentDescription="Capture Photo"
+            android:layout_marginEnd="20dp" />
+
+        <!-- Save Button -->
+        <ImageButton
+            android:id="@+id/saveButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/save"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
+            android:contentDescription="Save Photo" />
+    </LinearLayout>
+
+</LinearLayout>
