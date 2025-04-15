@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Google_Firebase</string>
+    <string name="default_web_client_id">986877219331-dis2ebhohkbvs5d2166fu6jcrlu0sbqo.apps.googleusercontent.com</string>
+    <string name="welcome">Welcome!</string>
+    <string name="signin">Sign in to continue to the app</string>
+    <string name="signingoogleacc">Sign in to continue with your Google account</string>
+
+</resources>

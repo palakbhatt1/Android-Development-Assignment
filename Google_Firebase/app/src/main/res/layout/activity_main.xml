@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/main"
+    android:layout_height="match_parent"
+    android:background="#FBFAFB"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="180dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/welcome"
+        android:textColor="#1A73E8"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="@string/signin"
+        android:textColor="#4B5563"
+        android:textSize="16sp" />
+
+    <ImageButton
+        android:id="@+id/btnGoogleSignIn"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:src="@drawable/google_button"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/signingoogleacc"
+        android:textAlignment="center"
+        android:textColor="#6B7280"
+        android:textSize="14sp" />
+</LinearLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/welcomepage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDFCFD"
+    android:padding="24dp"
+    android:gravity="center"
+    android:paddingTop="100dp"
+    android:orientation="vertical"
+    tools:context=".WelcomePage">
+
+    <ImageView
+            android:id="@+id/userImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/person" />
+
+    <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Hi, Palak!"
+            android:textColor="#1A73E8"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="You've successfully signed in to the app! "
+            android:textAlignment="center"
+            android:textColor="#111827" />
+
+        <ImageButton
+            android:id="@+id/logout"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:src="@drawable/logout" />
+
+
+</LinearLayout>
